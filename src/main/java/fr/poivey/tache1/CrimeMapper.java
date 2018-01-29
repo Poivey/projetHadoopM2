@@ -11,12 +11,12 @@ public class CrimeMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
   @Override
   public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+    if (key.get() != 0L) {
+      String[] ligne = value.toString().split(",");
 
-    String[] ligne = value.toString().split(",");
+      String crime = ligne[5].toLowerCase();
 
-    String crime = ligne[5].toLowerCase();
-
-    context.write(new Text(crime), new IntWritable(1));
+      context.write(new Text(crime), new IntWritable(1));
+    }
   }
-
 }
