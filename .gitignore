@@ -1,6 +1,9 @@
 output/
 Prise de note.txt
 
+#Libre office
+.~lock*
+
 # Created by https://www.gitignore.io/api/java,maven,intellij,apachehadoop
 
 ### ApacheHadoop ###
