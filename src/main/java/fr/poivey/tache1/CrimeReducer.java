@@ -1,15 +1,12 @@
 package fr.poivey.tache1;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.stream.StreamSupport;
 
 public class CrimeReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
@@ -31,15 +28,15 @@ public class CrimeReducer extends Reducer<Text, IntWritable, Text, IntWritable> 
 
   @Override
   public void cleanup(Context context) {
-    List<Entry> sortedList = new ArrayList(crimeMap.entrySet());
-    sortedList.sort((Entry e1, Entry e2) -> ((Integer)e2.getValue()) - ((Integer)e1.getValue()));
-    sortedList.forEach(entry -> {
-      try {
-        context.write((Text)entry.getKey(), new IntWritable((Integer)entry.getValue()));
-      } catch (IOException | InterruptedException e) {
-        e.printStackTrace();
-      }
-    });
+    crimeMap.entrySet().stream()
+        .sorted(Map.Entry.<Text, Integer>comparingByValue().reversed())
+        .forEach(entry -> {
+          try {
+            context.write(entry.getKey(), new IntWritable(entry.getValue()));
+          } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+          }
+        });
   }
 
 }
