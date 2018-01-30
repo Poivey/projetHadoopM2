@@ -1,22 +1,24 @@
 package fr.poivey.tache1;
 
-import fr.poivey.tache1.utility.CrimeAndCount;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.StreamSupport;
 
 public class CrimeReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 
-  private List<CrimeAndCount> crimeList;
+  private Map<Text, Integer> crimeMap;
 
   @Override
   public void setup(Context context) {
-    crimeList = new ArrayList();
+    crimeMap = new HashMap<>();
   }
 
   @Override
@@ -24,15 +26,16 @@ public class CrimeReducer extends Reducer<Text, IntWritable, Text, IntWritable> 
     int count = StreamSupport.stream(values.spliterator(), false)
             .mapToInt(IntWritable::get)
             .sum();
-    crimeList.add(new CrimeAndCount(new Text(key), new IntWritable(count)));
+    crimeMap.put(new Text(key), count);
   }
 
   @Override
   public void cleanup(Context context) {
-    crimeList.sort((CrimeAndCount c1, CrimeAndCount c2) -> c2.getCount().get() - c1.getCount().get());
-    crimeList.forEach(cAndC -> {
+    List<Entry> sortedList = new ArrayList(crimeMap.entrySet());
+    sortedList.sort((Entry e1, Entry e2) -> ((Integer)e2.getValue()) - ((Integer)e1.getValue()));
+    sortedList.forEach(entry -> {
       try {
-        context.write(cAndC.getCrime(), cAndC.getCount());
+        context.write((Text)entry.getKey(), new IntWritable((Integer)entry.getValue()));
       } catch (IOException | InterruptedException e) {
         e.printStackTrace();
       }
