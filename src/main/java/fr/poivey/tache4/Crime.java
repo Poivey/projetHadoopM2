@@ -17,7 +17,7 @@ public class Crime {
     }
 
     Configuration conf = new Configuration();
-    Job job = Job.getInstance(conf, "Sorting crime categories by occurence");
+    Job job = Job.getInstance(conf, "Determine location of resolved and unsolved crime");
     job.setJarByClass(Crime.class);
 
     FileInputFormat.addInputPath(job, new Path(args[0]));
