@@ -12,7 +12,7 @@ public class CrimeReducer extends Reducer<Text, Text, Text, IntWritable> {
   @Override
   public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
 
-    TopNPriorityQueue top3 = new TopNPriorityQueue();
+    TopNPriorityQueue top3 = new TopNPriorityQueue(3);
 
     for (Text value : values) {
       top3.insert(value.toString());
@@ -24,6 +24,5 @@ public class CrimeReducer extends Reducer<Text, Text, Text, IntWritable> {
       context.write(new Text(key.toString() + ":" + monthAndCount[0]), new IntWritable(Integer.valueOf(monthAndCount[1])));
     }
   }
-
 
 }
