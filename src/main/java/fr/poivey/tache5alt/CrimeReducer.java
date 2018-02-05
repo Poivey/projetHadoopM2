@@ -1,6 +1,6 @@
-package fr.poivey.tache5variation;
+package fr.poivey.tache5alt;
 
-import fr.poivey.tache5variation.utility.TopNPriorityQueue;
+import fr.poivey.utility.TopNPriorityQueue;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -19,6 +19,7 @@ public class CrimeReducer extends Reducer<Text, Text, Text, IntWritable> {
     }
 
     while (top3.size() > 0){
+
       String[] monthAndCount = top3.pop().split(":");
       context.write(new Text(key.toString() + ":" + monthAndCount[0]), new IntWritable(Integer.valueOf(monthAndCount[1])));
     }

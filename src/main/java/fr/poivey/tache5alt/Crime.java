@@ -1,4 +1,4 @@
-package fr.poivey.tache5variation;
+package fr.poivey.tache5alt;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -17,11 +17,11 @@ public class Crime {
     }
 
     Configuration conf = new Configuration();
-    Job job = Job.getInstance(conf, "Top 3 month per crime");
+    Job job = Job.getInstance(conf, "Top 3 month for each crime");
     job.setJarByClass(Crime.class);
 
     FileInputFormat.addInputPath(job, new Path(args[0]));
-    Path outputPath = new Path("./output/crime5");
+    Path outputPath = new Path("./output/crime5alt");
     FileOutputFormat.setOutputPath(job, outputPath);
     outputPath.getFileSystem(conf).delete(outputPath,true);
 

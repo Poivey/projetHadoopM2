@@ -1,4 +1,4 @@
-package fr.poivey.tache5variation;
+package fr.poivey.tache5alt;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
