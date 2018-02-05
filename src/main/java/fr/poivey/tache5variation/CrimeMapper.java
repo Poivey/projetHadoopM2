@@ -1,6 +1,5 @@
-package fr.poivey.tache5;
+package fr.poivey.tache5variation;
 
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;

@@ -1,4 +1,4 @@
-package fr.poivey.tache5.utility;
+package fr.poivey.tache5variation.utility;
 
 import org.apache.hadoop.util.PriorityQueue;
 

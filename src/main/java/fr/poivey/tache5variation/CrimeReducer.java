@@ -1,15 +1,11 @@
-package fr.poivey.tache5;
+package fr.poivey.tache5variation;
 
-import fr.poivey.tache5.utility.TopNPriorityQueue;
+import fr.poivey.tache5variation.utility.TopNPriorityQueue;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.stream.StreamSupport;
 
 public class CrimeReducer extends Reducer<Text, Text, Text, IntWritable> {
 

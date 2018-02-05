@@ -1,4 +1,4 @@
-package fr.poivey.tache5;
+package fr.poivey.tache5variation;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
