@@ -3,6 +3,7 @@
 
     const drawChart = (rows) => {
 
+        console.log(rows)
         const data = new google.visualization.DataTable();
         data.addColumn('string', 'Crime');
         data.addColumn('number', 'Instances');
