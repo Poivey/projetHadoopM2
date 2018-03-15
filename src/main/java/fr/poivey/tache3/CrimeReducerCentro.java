@@ -13,35 +13,34 @@ public class CrimeReducerCentro extends Reducer<IntWritable, Text, IntWritable, 
 
   @Override
   public void reduce(IntWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-    double latCentroid = 0d;
-    double longCentroid = 0d;
+    double latCentroid = 0.0;
+    double longCentroid = 0.0;
     int count = 0;
 
     Set<Double[]> locationInCentroid = new HashSet<>();
     for (Text value: values) {
       Double[] location = new Double[2];
-
       String[] latLong = value.toString().split(" ");
 
       latCentroid += Double.parseDouble(latLong[0]);
-      location[0] = latCentroid;
+      location[0] = Double.parseDouble(latLong[0]);
 
       longCentroid += Double.parseDouble(latLong[1]);
-      location[1] = longCentroid;
+      location[1] = Double.parseDouble(latLong[1]);
 
       locationInCentroid.add(location);
-
       count += 1;
     }
 
     latCentroid = latCentroid/count;
     longCentroid = longCentroid/count;
 
-    int countInTwoKm = count;
-//    int countInTwoKm = 0;
-//    for (Double[] location : locationInCentroid) {
-//      if (distanceKm(location[0], location[1], latCentroid, longCentroid) <= 2){countInTwoKm += 1;}
-//    }
+    int countInTwoKm = 0;
+    for (Double[] location : locationInCentroid) {
+      if (distanceKm(location[0], location[1], latCentroid, longCentroid) <= 2){
+        countInTwoKm += 1;
+      }
+    }
 
     context.write(key, new Text(String.format("%s %s %d", latCentroid, longCentroid, countInTwoKm)));
   }

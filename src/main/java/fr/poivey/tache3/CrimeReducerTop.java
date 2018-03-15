@@ -29,7 +29,6 @@ public class CrimeReducerTop extends Reducer<Text, IntWritable, Text, IntWritabl
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                     (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
-    System.out.println(result);
     Set<Map.Entry<String, Integer>> resultSet = result.entrySet();
     int i = 0;
     for (Map.Entry<String, Integer> entry : resultSet) {
