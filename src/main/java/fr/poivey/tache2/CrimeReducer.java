@@ -33,7 +33,6 @@ public class CrimeReducer extends Reducer<Text, IntWritable, Text, IntWritable> 
   public void cleanup(Context context){
     List<Text> keyList = new ArrayList(hourCrimeMap.keySet());
     keyList.sort((Text t1, Text t2) -> Integer.valueOf(t1.toString().split("-")[0]) - Integer.valueOf(t2.toString().split("-")[0]));
-//    keyList.sort(Comparator.comparingInt(Text::toString)); TODO faire le comparator comme ceci
     keyList.forEach(key -> {
       try {
         context.write(key, new IntWritable(hourCrimeMap.get(key)));
