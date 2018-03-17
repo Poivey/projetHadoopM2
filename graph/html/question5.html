@@ -10,10 +10,10 @@
 <body>
 <section class="section">
     <div class="container">
-        <h1 class="title">Crimes cases in San Fransisco</h1>
+        <h1 class="title is-1">Crimes cases in San Fransisco</h1>
         <div class="tabs is-centered is-boxed">
             <ul>
-                <li><a href="question2.html">Index</a></li>
+                <li><a href="index.html">Index</a></li>
                 <li><a href="question1.html">Question 1</a></li>
                 <li><a href="question2.html">Question 2</a></li>
                 <li><a href="question3.html">Question 3</a></li>
@@ -23,6 +23,39 @@
             </ul>
         </div>
 
+        <h3 class="title is-3 is-spaced">Question 5</h3>
+        <h5 class="subtitle is-5 is-spaced">Donnez le top 3 des mois les plus concernés par les cas de crimes</h5>
+        <h3 class="title is-3 is-spaced">Données techniques</h3>
+        <p>Cette éxécution a été réalisée sur le cluster hadoop de l'ufr</p>
+        <br>
+        <h5 class="title is-5">Temps de traitement</h5>
+        <p>
+            Total time spent by all map tasks (ms)=253412<br>
+            Total time spent by all reduce tasks (ms)=20481
+        </p><br>
+        <p>
+            Map input records=6486072<br>
+            Map output records=144
+        </p><br>
+        <p>
+            Reduce input records=144<br>
+            Reduce output records=3
+        </p><br>
+        <h5 class="title is-5">Mapper</h5>
+        <p>
+            Le mapper instancie une Map dans sa partie setup()<br>
+            Dans la partie map() il récupère le mois de chaque ligne et ajoute ce mois à la Map instancié, ce qui lui permet de compter le nombre d'occurance de chaque mois.<br>
+            Enfin dans la partie cleanUp(), il parcours la Map pour écrire dans le context des tuples (mois, nombre d'occurences)<br><br>
+            Dans les logs de l'éxécution du programme, on remaque la ligne "Launched map tasks=12" qui veut dire que le Job a été fait avec 12 mapper, c'est pour cela qu'il y a 144 entrées dans le reduce (12 mois * 12 mapper = 144 entrées)
+        </p><br>
+        <h5 class="title is-5">Reducer</h5>
+        <p>
+            Le reducer instancie une PriorityQueue de taille 3 dans sa phase de setup()<br>
+            Dans la partie reduce() il fait le total du compte des mapper pour chaque mois et ajoute le tuple (mois, nombre d'occurences) à la priority queue<br>
+            Enfin dans la partie cleanUp(), les trois éléments triés de la priority queue sont écrits dans le context
+        </p><br>
+
+        <h3 class="title is-3 is-spaced">Graphique</h3>
         <div id="chart_div"></div>
     </div>
 </section>

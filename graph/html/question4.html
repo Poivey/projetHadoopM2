@@ -15,43 +15,40 @@
             <ul>
                 <li><a href="index.html">Index</a></li>
                 <li><a href="question1.html">Question 1</a></li>
-                <li class="is-active"><a href="question2.html">Question 2</a></li>
+                <li><a href="question2.html">Question 2</a></li>
                 <li><a href="question3.html">Question 3</a></li>
-                <li><a href="question4.html">Question 4</a></li>
+                <li class="is-active"><a href="question4.html">Question 4</a></li>
                 <li><a href="question5.html">Question 5</a></li>
                 <li><a href="question5alt.html">Question 5+</a></li>
             </ul>
         </div>
 
-        <h3 class="title is-3 is-spaced">Question 2</h3>
-        <h5 class="subtitle is-5 is-spaced">Donnez le nombre de crimes en fonction de 6 plages horaires (0-4, 4-8, 8-12, 12-16, 16-20, 20-24)</h5>
+        <h3 class="title is-3 is-spaced">Question 4</h3>
+        <h5 class="subtitle is-5 is-spaced">Donnez la répartition géographique des crimes commis/élucidés</h5>
         <h3 class="title is-3 is-spaced">Données techniques</h3>
         <p>Cette éxécution a été réalisée sur le cluster hadoop de l'ufr</p>
         <br>
         <h5 class="title is-5">Temps de traitement</h5>
         <p>
-            Total time spent by all map tasks (ms)=280378<br>
-            Total time spent by all reduce tasks (ms)=19099
+            Total time spent by all map tasks (ms)=295905<br>
+            Total time spent by all reduce tasks (ms)=35330
         </p><br>
         <p>
             Map input records=6486072<br>
-            Map output records=6486071
+            Map output records=6398896
         </p><br>
         <p>
-            Reduce input records=6486071<br>
-            Reduce output records=6
+            Reduce input records=6398896<br>
+            Reduce output records=1174510
         </p><br>
         <h5 class="title is-5">Mapper</h5>
         <p>
-            Le mapper récupère le l'heure de chaque ligne et l'associe à un String ("0-4", "4-8"...)<br>
-            Il écrit ensuite dans le context sous la forme (String, 1). Le String est une plage horaire, pour que le reducer puisse ensuite compter le nombre de crime pour chaque plage.
+            Pour cette tâche le mapper est extrèmement simple, il se content d'extraire la localisation de chaque crime et son attribut "arrest"<br>
+            Il vérifie ensuite l'intégrité de ces éléments, puis écrit dans le context sous la forme (localisation + " " + arrest, 1)
         </p><br>
         <h5 class="title is-5">Reducer</h5>
         <p>
-            Ce reducer est très similaire à celui de la question 1<br>
-            Il instancie une Map dans sa phase de setup()<br>
-            Dans la partie reduce() il compte le nombre d'éléments associé à chaque plage horaire (ici le nombre de 1), et ajoute à la Map une entrée (key, count)<br>
-            Enfin dans la partie cleanUp(), les entrés de la Map sont triées et on écrit dans le context la plage horaire avec son nombre d'occurences
+            Le reducer compte le nombre d'occurence de chaque clé (une clé est un lieu et un booléen arrest), afin d'avoir un nombre d'occurence pour chaque localisation en fonction du booléen d'arrestation
         </p><br>
 
         <h3 class="title is-3 is-spaced">Graphique</h3>
@@ -59,6 +56,6 @@
     </div>
 </section>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type='text/javascript' src='../js/question2.js'></script>
+<script type='text/javascript' src='../js/question4.js'></script>
 </body>
 </html>

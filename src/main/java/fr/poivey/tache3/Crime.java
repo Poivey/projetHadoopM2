@@ -27,7 +27,7 @@ public class Crime {
 
     boolean hasConverged = false;
     int iteration = 0;
-    while (!hasConverged && iteration < 30){
+    while (!hasConverged && iteration < 25){
 
       // executes hadoop job
       if (!startJobCreationCentroid(args[0], centroidFileTemp)) {

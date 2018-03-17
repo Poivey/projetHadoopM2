@@ -10,10 +10,10 @@
 <body>
 <section class="section">
     <div class="container">
-        <h1 class="title">Crimes cases in San Fransisco</h1>
+        <h1 class="title is-1">Crimes cases in San Fransisco</h1>
         <div class="tabs is-centered is-boxed">
             <ul>
-                <li><a href="question2.html">Index</a></li>
+                <li><a href="index.html">Index</a></li>
                 <li class="is-active"><a href="question1.html">Question 1</a></li>
                 <li><a href="question2.html">Question 2</a></li>
                 <li><a href="question3.html">Question 3</a></li>
@@ -22,7 +22,38 @@
                 <li><a href="question5alt.html">Question 5+</a></li>
             </ul>
         </div>
+        <h3 class="title is-3 is-spaced">Question 1</h3>
+        <h5 class="subtitle is-5 is-spaced">Donnez le classement décroissant des catégories de crimes</h5>
+        <h3 class="title is-3 is-spaced">Données techniques</h3>
+        <p>Cette éxécution a été réalisée sur le cluster hadoop de l'ufr</p>
+        <br>
+        <h5 class="title is-5">Temps de traitement</h5>
+        <p>
+            Total time spent by all map tasks (ms)=285160<br>
+            Total time spent by all reduce tasks (ms)=16209
+        </p><br>
+        <p>
+            Map input records=6486072<br>
+            Map output records=6486071
+        </p><br>
+        <p>
+            Reduce input records=6486071<br>
+            Reduce output records=35
+        </p><br>
+        <h5 class="title is-5">Mapper</h5>
+        <p>
+            Mapper très classique en Hadoop.<br>
+            Il parcours toutes les lignes, extrait les crimes, et écrit dans le context sous la forme (crime, 1) pour pouvoir par la suite compter le nombre de crime du même nom.
+        </p><br>
+        <h5 class="title is-5">Reducer</h5>
+        <p>
+            Le reducer instancie une Map dans sa phase de setup()<br>
+            Dans la partie reduce() il compte le nombre d'éléments associé à chaque key (ici le nombre de 1), et ajoute à la Map une entrée (key, count),
+            count est le nombre d'occurences de la clé<br>
+            Enfin dans la partie cleanUp(), les entrés de la Map sont triées et on écrit dans le context le nom du crime avec son nombre d'occurences
+        </p><br>
 
+        <h3 class="title is-3 is-spaced">Graphique</h3>
         <div id="chart_div"></div>
     </div>
 </section>

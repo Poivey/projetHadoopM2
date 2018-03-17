@@ -18,9 +18,11 @@ public class CrimeReducer extends Reducer<Text, IntWritable, Text, IntWritable> 
 
   @Override
   public void reduce(Text key, Iterable<IntWritable> values, Context context) {
+    Integer count = 0;
     for (IntWritable value : values){
-      top3.insert(key.toString() + ":" + value.toString());
+      count += value.get();
     }
+    top3.insert(key.toString() + ":" + count.toString());
   }
 
   @Override
