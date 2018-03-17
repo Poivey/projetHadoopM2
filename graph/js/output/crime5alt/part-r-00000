@@ -1,0 +1,103 @@
+arson:05	1001
+arson:06	1011
+arson:07	1110
+assault:06	37730
+assault:07	38208
+assault:05	39099
+battery:05	114812
+battery:06	114884
+battery:07	115258
+burglary:07	35208
+burglary:10	35570
+burglary:08	36135
+concealed carry license violation:07	15
+concealed carry license violation:08	15
+concealed carry license violation:10	21
+crim sexual assault:06	2342
+crim sexual assault:08	2433
+crim sexual assault:07	2468
+criminal damage:10	67975
+criminal damage:08	69100
+criminal damage:07	70508
+criminal trespass:01	16233
+criminal trespass:08	16355
+criminal trespass:03	16597
+deceptive practice:01	20778
+deceptive practice:10	20818
+deceptive practice:08	21325
+domestic violence:01	1
+gambling:06	1802
+gambling:07	1904
+gambling:08	2144
+homicide:06	908
+homicide:08	916
+homicide:07	989
+human trafficking:09	5
+human trafficking:03	5
+human trafficking:01	5
+interference with public officer:06	1333
+interference with public officer:07	1362
+interference with public officer:08	1403
+intimidation:05	348
+intimidation:10	355
+intimidation:09	359
+kidnapping:07	562
+kidnapping:06	614
+kidnapping:05	616
+liquor law violation:05	1298
+liquor law violation:03	1341
+liquor law violation:06	1376
+motor vehicle theft:10	26900
+motor vehicle theft:08	26958
+motor vehicle theft:07	27375
+narcotics:08	60338
+narcotics:01	61418
+narcotics:03	64347
+non - criminal:09	5
+non - criminal:02	5
+non - criminal:06	9
+non-criminal:07	14
+non-criminal:10	16
+non-criminal:08	16
+non-criminal (subject specified):09	1
+non-criminal (subject specified):01	1
+non-criminal (subject specified):02	2
+obscenity:05	45
+obscenity:03	52
+obscenity:10	56
+offense involving children:05	3755
+offense involving children:06	3782
+offense involving children:01	4726
+other narcotic violation:08	15
+other narcotic violation:05	15
+other narcotic violation:07	16
+other offense:05	35411
+other offense:01	35834
+other offense:03	36628
+prostitution:03	6031
+prostitution:08	6097
+prostitution:01	6223
+public indecency:11	16
+public indecency:06	17
+public indecency:08	20
+public peace violation:09	4408
+public peace violation:10	4427
+public peace violation:05	4683
+ritualism:10	3
+ritualism:12	3
+ritualism:01	3
+robbery:07	23380
+robbery:08	23462
+robbery:10	23699
+sex offense:08	2267
+sex offense:06	2385
+sex offense:07	2482
+stalking:09	285
+stalking:04	285
+stalking:06	288
+theft:10	122727
+theft:08	133162
+theft:07	133493
+weapons violation:07	6037
+weapons violation:08	6059
+weapons violation:05	6168

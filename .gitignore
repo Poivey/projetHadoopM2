@@ -1,4 +1,5 @@
 output/
+!graph/js/output
 Prise de note.txt
 data-full.csv
 
