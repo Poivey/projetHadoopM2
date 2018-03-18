@@ -35,14 +35,17 @@
         <h3 class="title is-3 is-spaced">Question 3</h3>
         <h5 class="subtitle is-5 is-spaced">Donnez les 3 zones les plus dangereuses et les zones les moins dangereuses (rayon de 2 kms)</h5>
         <h3 class="title is-3 is-spaced">Données techniques</h3>
-        <p>Cette éxécution a été réalisée ma machine personnelle. En effet il le programme réalisé était trop demandeur de mémoire vive et nous avions des erreur : "Java heap space" lors de la phase de mapping</p><br>
-        <p>La classe principale définie des centroids en itérant sur le Job 1 (maximum : 25), puis passe les centroids au Job 2 pour déterminer le top 3 des centroids les plus et moins criminels</p>
-        <p><a href="https://github.com/andreaiacono/MapReduce/tree/master/src/main/java/samples/kmeans">Cette implémentation de l'algorithme de kmeans avec hadoop a été pour beaucoup inspiré par la solution de Andrea Iacono</a></p>
+        <p>Cette exécution a été réalisée ma machine personnelle. En effet, le programme réalisé était trop demandeur
+            en mémoire vive et une exception apparaissait : "Java heap space" lors de la phase de mapping</p><br>
+        <p>La classe principale définie des centroids en itérant sur le Job 1 (maximum : 25),
+            puis passe les centroids au Job 2 pour déterminer le top 3 des centroids les plus et moins criminels</p>
+        <p><a href="https://github.com/andreaiacono/MapReduce/tree/master/src/main/java/samples/kmeans">
+            Cette implémentation de l'algorithme de kmeans avec Hadoop a été pour beaucoup inspiré par la solution de Andrea Iacono</a></p>
         <br>
         <h5 class="title is-5">Temps de traitement</h5>
         <p>
             N'ayant pas exécuté le programme dans un environnement distribué, nous n'avons pas pu récupérer de données précises à propos du temps d'exécution<br>
-            Nous avons mesuré en moyenne un temps à la seconde près via le temps système d'une itération du Job 1 avec notre gros jeu de donnés : 42 secondes<br>
+            Nous avons mesuré en moyenne un temps à la seconde près via le temps système d'une itération du Job 1 avec notre gros jeu de données : 42 secondes<br>
             Avec ce jeu de données, le Job 1 atteint le maximum d'itération avant de ne plus être rappelé : 25<br>
             On peut estimer alors le temps de déterminer les clusters à 17 minutes et 30 secondes<br><br>
             Le Job 2 est lui très rapide, mesurer son temps à la seconde près ne présente que peu d'intérêt
@@ -64,13 +67,13 @@
         </p><br>
         <h5 class="title is-5">Reducer</h5>
         <p>
-            Le reducer reçoit donc 10 ensembles de localisation associés à chaque index de centroids (par exemple, centroid 0 : [locA, locB, locC,...])<br>
+            Le reducer reçoit donc 10 ensembles de localisation associés à chaque index de centroids (Par exemple, centroid 0 : [locA, locB, locC,...])<br>
             Ce reducer n'est composé que d'une fonction reduce()<br>
             Pour chaque index de centoid, il calcule la moyenne des localisations associées et défini alors des nouvelles coordonnées pour le centroid donné<br>
-            Il calcule ensuite combien de localisation, parmis celles reçues pour chaque centroid, sont à moins de 2km des nouvelles coordonnées<br>
+            Il calcule ensuite combien de localisation, parmi celles reçues pour chaque centroid, sont à moins de 2km des nouvelles coordonnées<br>
             Avec cette information, il écrit alors dans le context pour chaque index de centroid : (index, lattitude longitude nombreCrimeRayon2km)<br><br>
-            Par la suite le programme principale va comparer les centroids passés en cache au Job 1 à ceux produits par ce reducer.
-            S'il sont identiques alors le programme passe au Job suivant, sinon il met à jours le fichier de centroid de référence pour le mapper et rappel le Job 1.
+            Par la suite, le programme principale va comparer les centroids passés en cache au Job 1 à ceux produits par ce reducer.
+            S'ils sont identiques alors le programme passe au Job suivant, sinon il met à jour le fichier de centroids de référence pour le mapper et rappel le Job 1.
             (Si le maximum d'itération est atteint alors on passe au Job suivant)
         </p><br>
 
@@ -85,17 +88,20 @@
         </p><br>
         <h5 class="title is-5">Mapper</h5>
         <p>
-            Ici le mapper prend les 10 centroids trouvés et les transmets touts au reducer en enlevant leur index (les centroids sont indéxés de 0 à 9 dans le fichier)
+            Ici le mapper prend les 10 centroids trouvés et les transmets touts au reducer en enlevant leur index
+            (les centroids sont indéxés de 0 à 9 dans le fichier)
         </p><br>
         <h5 class="title is-5">Reducer</h5>
         <p>
             Le reducer est simple, dans la partie setup() il instancie une Map.
-            Dans la partie reduce() il ajoute chaque centroid dans la Map (localisation, nombre de crime dans les 2km)
-            Dans la partie cleanUp(), les entrées de la Map sont triées en fonction de leur valeur (le nombre de crime), les 3 centroids les plus et moins meurtriers sont ensuite écrits dans le context (localisation, nombre de crime)
+            Dans la partie reduce() il ajoute chaque centroid dans la Map (localisation, nombre de crimes dans les 2km)
+            Dans la partie cleanUp(), les entrées de la Map sont triées en fonction de leur valeur (le nombre de crimes),
+            les 3 centroids les plus et moins criminels sont ensuite écrits dans le context (localisation, nombre de crimes)
         </p><br>
 
         <h3 class="title is-3 is-spaced">Graphique</h3>
-        <p>Les zones avec le plus de crimes sont en <span class="has-text-danger has-text-weight-bold">rouge</span>, celles avec le moins de crimes sont en <span class="has-text-success has-text-weight-bold">vert</span> </p>
+        <p>Les zones avec le plus de crimes sont en <span class="has-text-danger has-text-weight-bold">rouge</span>,
+            celles avec le moins de crimes sont en <span class="has-text-success has-text-weight-bold">vert</span> </p>
         <div id="mapLeaflet"></div>
 
     </div>

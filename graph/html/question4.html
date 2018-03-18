@@ -35,7 +35,7 @@
         <h3 class="title is-3 is-spaced">Question 4</h3>
         <h5 class="subtitle is-5 is-spaced">Donnez la répartition géographique des crimes commis/élucidés</h5>
         <h3 class="title is-3 is-spaced">Données techniques</h3>
-        <p>Cette éxécution a été réalisée sur le cluster hadoop de l'ufr</p>
+        <p>Cette exécution a été réalisée sur le cluster Hadoop de l'UFR</p>
         <br>
         <h5 class="title is-5">Temps de traitement</h5>
         <p>
@@ -52,20 +52,22 @@
         </p><br>
         <h5 class="title is-5">Mapper</h5>
         <p>
-            Pour cette tâche le mapper est extrèmement simple, il se content d'extraire la localisation de chaque crime et son attribut "arrest"<br>
+            Pour cette tâche, le mapper est très simple, il se content d'extraire la localisation de chaque crime et son attribut "arrest"<br>
             Il vérifie ensuite l'intégrité de ces éléments, puis écrit dans le context sous la forme (localisation + " " + arrest, 1)
         </p><br>
         <h5 class="title is-5">Reducer</h5>
         <p>
-            Le reducer compte le nombre d'occurence de chaque clé (une clé est un lieu et un booléen arrest), afin d'avoir un nombre d'occurence pour chaque localisation en fonction du booléen d'arrestation
+            Le reducer compte le nombre d'occurrences  de chaque clé (une clé est un lieu et un booléen arrest),
+            afin d'avoir un nombre d'occurence pour chaque localisation en fonction du booléen d'arrestation
         </p><br>
 
         <h3 class="title is-3 is-spaced">Graphiques</h3>
         <p>
             Pour représenter ses données, deux cartes comparatives semblent être la forme la plus adaptée.<br>
             Ces cartes sont des cartes de chaleur, les zones mises en valeur sont celles avec le plus de crime en moyenne dans la région.<br>
-            Les zones de chaleur sont plus ou moins forte (de bleu à rouge, et plus ou moins opaque) suivant la moyenne du nombre de crime élucidé ou non dans la zone<br><br>
-            Zoomer pour plus de détail et rafiner les zones.<br>
+            Les zones de chaleur sont plus ou moins forte (de bleu à rouge, et plus ou moins opaque) suivant
+            la moyenne du nombre de crimes élucidé ou non dans la zone<br><br>
+            Zoomer pour plus de détail et raffiner les zones.<br>
         </p><br>
         <div class="columns">
             <div class="column">
