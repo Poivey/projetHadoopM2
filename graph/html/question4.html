@@ -6,6 +6,15 @@
     <title>Crimes cases in San Fransisco</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+          integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+            integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+            crossorigin=""></script>
+    <style>
+        .map { height: 900px; }
+    </style>
 </head>
 <body>
 <section class="section">
@@ -52,10 +61,27 @@
         </p><br>
 
         <h3 class="title is-3 is-spaced">Graphique</h3>
-        <div id="chart_div"></div>
+        <p>
+            Pour représenter ses données, deux cartes comparatives semblent être la forme la plus adaptée.<br>
+            Ces cartes sont des cartes de chaleur, les zones mises en valeur sont celles avec le plus de crime en moyenne dans la région.<br>
+            Les zones de chaleur sont plus ou moins forte (de bleu à rouge, et plus ou moins opaque) suivant la moyenne du nombre de crime élucidé ou non dans la zone<br><br>
+            Zoomer pour plus de détail et rafiner les zones.<br>
+        </p><br>
+        <div class="columns">
+            <div class="column">
+                <p>Répartition géographique des crimes élucidés (arrest = true)</p>
+                <div class="map" id="mapLeafletArrested"></div>
+            </div>
+            <div class="column">
+                <p>Répartition géographique des crimes commis mais non élucidés (arrest = false)</p>
+                <div class="map" id="mapLeafletNotArrested"></div>
+            </div>
+        </div>
+
     </div>
 </section>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="../js/leaflet-heat.js"></script>
 <script type='text/javascript' src='../js/question4.js'></script>
 </body>
 </html>
