@@ -13,6 +13,7 @@
             legend: {position: 'none'},
             title: 'Top 3 Criminal months',
             vAxis: {
+                minValue: 0,
                 title: 'Instances'
             },
             height: 500
