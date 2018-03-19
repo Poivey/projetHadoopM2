@@ -37,7 +37,7 @@
         <h3 class="title is-3 is-spaced">Données techniques</h3>
         <p>Cette exécution a été réalisée ma machine personnelle. En effet, le programme réalisé était trop demandeur
             en mémoire vive et une exception apparaissait : "Java heap space" lors de la phase de mapping</p><br>
-        <p>La classe principale définie des centroids en itérant sur le Job 1 (maximum : 25),
+            <p>La classe principale définie des centroids en itérant sur le Job 1 (maximum : 25), nous avons choisi d'implémenter un algorithme de kmeans avec 10 centroids
             puis passe les centroids au Job 2 pour déterminer le top 3 des centroids les plus et moins criminels</p>
         <p><a href="https://github.com/andreaiacono/MapReduce/tree/master/src/main/java/samples/kmeans">
             Cette implémentation de l'algorithme de kmeans avec Hadoop a été pour beaucoup inspiré par la solution de Andrea Iacono</a></p>
@@ -98,7 +98,11 @@
             Dans la partie cleanUp(), les entrées de la Map sont triées en fonction de leur valeur (le nombre de crimes),
             les 3 centroids les plus et moins criminels sont ensuite écrits dans le context (localisation, nombre de crimes)
         </p><br>
-
+        <h3 class="title is-3">Analyse</h3>
+        <p>
+            Les zones les moins criminelles de Chicago ont en moyenne un peu plus du tiers du nombre de crimes
+            des zones les plus criminelles. Ce résultat a été obtenu avec un algorithme de kmeans avec 10 groupes.
+        </p><br>
         <h3 class="title is-3 is-spaced">Graphique</h3>
         <p>Les zones avec le plus de crimes sont en <span class="has-text-danger has-text-weight-bold">rouge</span>,
             celles avec le moins de crimes sont en <span class="has-text-success has-text-weight-bold">vert</span> </p>

@@ -60,7 +60,15 @@
             Le reducer compte le nombre d'occurrences  de chaque clé (une clé est un lieu et un booléen arrest),
             afin d'avoir un nombre d'occurence pour chaque localisation en fonction du booléen d'arrestation
         </p><br>
-
+        <h3 class="title is-3">Analyse</h3>
+        <p>
+            Ces deux cartes montrent une claire tendance à Chicago. L'immense majorité des crimes ne sont jamais élucidés,
+            dans beaucoup de zones de la ville.<br><br>
+            Le chargement des cartes peut être très long, car elles contiennent beaucoup de données (1 174 510 coordonnées).
+            Pour pouvoir avoir une chargement plus rapide sans perdre beaucoup en précision il faudrait faire des groupes avec un kmeans
+            ou simplement quadriller la ville et indiquer une tendance dans chaque groupe (pourcentage de crime non élucidé).
+            Ainsi, il serait possible de faire environ 10 000 groupes, fichier qui serait bien plus rapide à charger, sans perdre en précision pour générer la heat-map.
+        </p><br>
         <h3 class="title is-3 is-spaced">Graphiques</h3>
         <p>
             Pour représenter ses données, deux cartes comparatives semblent être la forme la plus adaptée.<br>
