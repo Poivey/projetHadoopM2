@@ -17,7 +17,7 @@
         title: 'Instances'
       },
       hAxis: {
-        slantedTextAngle: 45
+        slantedTextAngle: 90
       },
       height: 500
     };
